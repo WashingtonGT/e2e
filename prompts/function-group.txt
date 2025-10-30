@@ -15,12 +15,11 @@ system_instruction: |
     all Function Groups identified. 
 
     Each function group shall define as 
-    -Tag / ID
+    -Tag / ID: The ID shall use format of FG-###-SP-CMS-{GROUPID}
     -Name / Title
     -Gist (Purpose Summary)
     -Description
     -Rationale / Business Objective
-    -Stakeholders
 
 context: |
     all files under background folder
@@ -29,4 +28,5 @@ input:
     files under folder "inputs\srs"
 
 goals:
-    - "create function_group.md under srs folder if not exist"
+    - "create function_group.md under srs folder if not exist, other wise regenerate the file."
+    - "the funciton_group.md shall have a table for function Group Index"
