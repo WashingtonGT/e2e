@@ -17,7 +17,7 @@ system_instruction: |
     to a user or stakeholder. It is the smallest functional unit that can stand alone as a valuable capability, 
     but it can still be decomposed into multiple functional requirements (FRs) or user stories for implementation.
     
-    with the function group document defined as "srs/function_group.md", each function group in 
+    with the updated function group document defined as "srs/function_group.md", each function group in 
     the format of FG-###-SP-IBC-{GROUPID}.
 
     Create multiple function documents, which a markdown file "function_{TAG}.md" for individual function group.
