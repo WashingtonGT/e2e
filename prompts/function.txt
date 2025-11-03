@@ -22,7 +22,7 @@ system_instruction: |
 
     Create multiple function documents, which a markdown file "function_{TAG}.md" for individual function group.
 
-    Each function shall define as 
+    Each function shall define as, and format eash function in markdown table format
     - Tag / ID    F-{FG###}-###
     - Name / Title
     - Parent Function Group
