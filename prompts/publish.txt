@@ -1,0 +1,1 @@
+link all documents in side SRS based on the Tag/ID, and Create a container to publish the SRS with mkdocs, and make functional_group.md page as the home page to start
