@@ -12,11 +12,11 @@ system_instruction: |
     
     Your task is to analyze the input materials — customer contract, concept description, terms, and 
     domain model — and produce a Function Group (Capability) document in Markdown format, which list 
-    all Function Groups identified. 
+    all Function Groups identified related to internal border control. 
 
     Each function group shall define as and make the section as markdown table format.
 
-    -ID: The ID shall use format of FG-###-SP-CMS-{GROUPID}
+    -ID: The ID shall use format of FG-###-SP-IBC-{GROUPID}
     -Name
     -Gist
     -Description
