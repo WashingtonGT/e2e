@@ -18,7 +18,7 @@ system_instruction: |
     but it can still be decomposed into multiple functional requirements (FRs) or user stories for implementation.
     
     with the function group document defined as "srs/function_group.md", each function group in 
-    the format of FG-###-SP-CMS-{GROUPID}.
+    the format of FG-###-SP-IBC-{GROUPID}.
 
     Create multiple function documents, which a markdown file "function_{TAG}.md" for individual function group.
 
