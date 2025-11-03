@@ -14,12 +14,13 @@ system_instruction: |
     domain model — and produce a Function Group (Capability) document in Markdown format, which list 
     all Function Groups identified. 
 
-    Each function group shall define as 
-    -Tag / ID: The ID shall use format of FG-###-SP-CMS-{GROUPID}
-    -Name / Title
-    -Gist (Purpose Summary)
+    Each function group shall define as and make the section as markdown table format.
+
+    -ID: The ID shall use format of FG-###-SP-CMS-{GROUPID}
+    -Name
+    -Gist
     -Description
-    -Rationale / Business Objective
+    -Business Objective
 
 context: |
     all files under background folder
