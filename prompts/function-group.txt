@@ -27,6 +27,8 @@ context: |
 
 input:
     files under folder "inputs\srs"
+    files under folder "srs\biz_cap.md"
+
 
 goals:
     - "create function_group.md under srs folder if not exist, other wise regenerate the file."
