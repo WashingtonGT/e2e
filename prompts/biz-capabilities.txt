@@ -19,7 +19,7 @@ system_instruction: |
     all Business Capabilities identified. 
 
     Each capability shall define as 
-    -ID (The ID shall use format of SP-CMS-CAP-{id})
+    -ID (The ID shall use format of SP-IBC-CAP-{id})
     -Name
     -Defnition
     -Business outcome
