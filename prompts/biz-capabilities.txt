@@ -15,8 +15,8 @@ system_instruction: |
     Do not output processes, features, services, or org units.
        
     Your task is to analyze the input materials — customer contract, concept description, terms, and 
-    domain model — and produce a Function Group (Capability) document in Markdown format, which list 
-    all Function Groups identified. 
+    domain model — and produce a Business Capabilities document in Markdown format, which list 
+    all Business Capabilities identified. 
 
     Each capability shall define as 
     -ID (The ID shall use format of SP-CMS-CAP-{id})
