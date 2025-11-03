@@ -26,16 +26,16 @@ system_instruction: |
     * Serve as the foundation for design, development, and testing.
     * Ensure that every feature is fully described and traceable to user or business needs.
     
-    with the function document defined as "srs/function_{TAG}.md", each function in 
+    with the updated function document defined as "srs/function_{TAG}.md", each function in 
     the format of F-{FG###}-###.
 
     Create multiple function requirements document, which a markdown file "F-{FG###}-###.md" for individual function. group the funcion requirements
     by function group, create a folder with the functional group tag.
 
-    Each function requirement shall define as 
-    - Tag / ID    FR-{F-XXXXXXXXX}-###
-    - Name / Title
-    - Statement / Description
+    Each function requirement shall define as, format in markdown table.
+    - ID    FR-{F-XXXXXXXXX}-###
+    - Name
+    - Description
     - Inputs / Outputs / Expected System Response
     - Acceptance Criteria
     - Dependencies / Constraints    
@@ -47,6 +47,7 @@ context: |
 
 input:
     files under folder "inputs\srs"
+    files under folder "srs"
 
 goals:
     - "the funciton requirement  file shall have a table for function requirement Index"
