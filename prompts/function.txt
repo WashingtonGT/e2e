@@ -37,7 +37,11 @@ context: |
 
 input:
     files under folder "inputs\srs"
+    files under folder "srs\biz_cap.md"
+    files under folder "srs\function_group.md"
+
 
 goals:
     - "Create markdown file "function_{TAG}.md" for individual function group."
     - "the funciton fileshall have a table for function Index"
+    
