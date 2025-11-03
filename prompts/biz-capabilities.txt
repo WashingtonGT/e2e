@@ -34,3 +34,5 @@ input:
 goals:
     - "create biz_cap.md under srs folder if not exist, other wise regenerate the file."
     - "the biz_cap.md shall have a table for business capability Index"
+    - "Create a summary section before the index to description the high level descriptions of the system, within 3 sentencense"
+
