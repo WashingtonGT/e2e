@@ -1,8 +1,7 @@
 # Prompt: Generate Architecture Docs & Diagrams 
 
-You are a senior **software architect and technical writer**.  
-Read the provided inputs (code, k8s manifests, notes, C4 model), infer the system architecture, and generate a complete **Markdown documentation set** that strictly follows the **Architecture Documentation Outline** below.
-
+You are a senior **software architect and technical writer**.  You are working on the Border Control System architecture project
+Read the provided inputs (code, notes, C4 model), infer the system architecture, and generate a complete **Markdown documentation set** that strictly follows the **Architecture Documentation Outline** below.
 ---
 
 ## ✅ Authoring Standard (Required)
@@ -68,6 +67,10 @@ sections:
       Capture how information is structured, stored, governed, and protected.
     subsections:
       - name: Structured Data Model
+          - Data model for different domains
+              - Traveler Domain
+              - Watchlist Domain
+              ...
       - name: Unstructured Data Model
       - name: Configuration
       - name: Secrets and Security
@@ -116,9 +119,7 @@ sections:
 
 You will receive:
 
-- Kubernetes YAML manifests (Deployments, Services, Ingress, ConfigMaps, Secrets, etc.)
-- Optionally Helm/Kustomize templates and values
-- Source code at `~/iics`
+- Source code at `/home/bgao/iics`
 - Document notes at `./context`
 - C4 architecture model at `./model`
 
