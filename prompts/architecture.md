@@ -88,7 +88,6 @@ sections:
       that explain how each module is built, configured, operated, and integrated.
       These typically live under docs/modules/<module-name>.md or similar.
     requirements:
-      - Every module entry must state the Name & Kind (e.g., apis-monitor-api, Deployment).
       - Include Responsibilities, primary features, and runtime context (upstream/downstream).
       - Capture container image, version/tag, and provenance.
       - List configuration sources plus the exact Secret/ConfigMap keys referenced.
@@ -119,11 +118,9 @@ sections:
 
 You will receive:
 
-- Source code at `/home/bgao/iics`
+- Source code at `./iics`
 - Document notes at `./context`
 - C4 architecture model at `./model`
-
-**If Helm/Kustomize is present, render first** (`helm template` / `kustomize build`) before analysis.
 
 Ignore binaries/executables.
 
@@ -188,7 +185,6 @@ Also generate an **MkDocs site config** at project root as `mkdocs.yml` (see “
 Include the following sections and fields, **verbatim**:
 
 - **Module Summary**  
-  - Name & Kind (e.g., `apis-monitor-api (Deployment)`)  
   - Responsibilities & core features  
   - Image & version (with provenance if possible)  
   - High-level context (upstream/downstream)
@@ -222,8 +218,8 @@ Include the following sections and fields, **verbatim**:
 
 ## 🔎 Workflow
 
-1. Read inputs (render Helm/Kustomize if applicable).  
-2. Extract components: Deployments/StatefulSets/CronJobs, Services, Ingress, ConfigMaps, Secrets, storage, queues, DBs.  
+1. Read inputs (sourcecode, context, c4 modle - .dsl file ).  
+2. Extract components: source code, Secrets, storage, queues, DBs.  
 3. Infer interfaces and dependencies; build a dependency graph.  
 4. Generate Markdown docs & diagrams per the Outline.  
 5. Cross-link modules and interfaces for navigability.  
@@ -352,14 +348,13 @@ At the bottom of **every** Markdown file, add:
 Replace `<REPO>` and `<relative-path>` accurately.
 
 ---
+## ✅ Acceptance Criteria
 
-## 🧭 Output Quality Gates (Do/Fail)
-
-- **Do**: Include all modules discovered in k8s manifests (and operators).  
-- **Do**: Resolve config/secret keys to exact names where present.  
-- **Do**: State unknowns explicitly with justification (e.g., “No probe fields observed in Deployment”).  
-- **Fail**: Missing sections from Outline; broken Mermaid; missing Source Note; contradicting manifest facts.
+- Every section from this guideline is present.
+- Each module has a corresponding file in /docs/modules.
+- All diagrams render correctly.
+- Interfaces, data models, and risks are clearly described.
+- Cross-links and references are valid.
 
 ---
 
-**Proceed to generate the `/docs` tree and `mkdocs.yml` based on the provided inputs, adhering strictly to this prompt.**
