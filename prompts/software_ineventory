@@ -1,0 +1,120 @@
+# Instruction: System Inventory Generation
+
+You are a software architecture assistant. Your task is to read a .NET C# solution (from one or more `*.sln` and `*.csproj` files) and produce an **Application Portfolio Catalog**.
+
+## 1. Goal
+
+From the provided `.sln` and `.csproj` contents (and any referenced config files), build an **application model** with multiple levels:
+
+* **Level 0 – System / Portfolio**
+* **Level 1 – Applications** (logical deployable units)
+* **Level 2 – Components** (technical projects inside each application)
+
+Each component must include:
+
+* `code_source`
+* `component_type`
+* `dependency_list`
+* `consumer_list`
+* `technology`
+
+## 2. Inputs You Can Use
+
+You may be given:
+* `*.sln` solution files
+* `*.csproj` project files
+* Related configs (`app.config`, `web.config`, `appsettings.json`, etc.)
+
+## 3. How to Analyze the Solution
+
+### 3.1 Identify Components
+
+Treat each `*.csproj` as a **component**. Use `<AssemblyName>` or project file name for naming. Group by folder or naming convention.
+
+### 3.2 Infer Component Type
+
+Determine `component_type` using project outputs, SDK, and references:
+
+* `desktop_app`
+* `web_app`
+* `service`
+* `console`
+* `component` (library)
+
+### 3.3 Determine Code Source
+
+Set `code_source` to relative path of `.csproj`.
+
+## 4. Dependencies and Consumers
+
+### 4.1 Dependency List
+
+Include:
+
+* Project dependencies (`<ProjectReference>`)
+* NuGet packages
+* External systems (from configs)
+
+### 4.2 Consumer List
+
+Reverse dependency: if A references B → B is consumed by A.
+
+## 5. Technology Stack
+
+Include:
+
+* `.net_target`
+* `platform`
+* `ui_framework`
+* `key_packages`
+* `runtime_environment`
+
+## 6. Levels and Groupings
+
+Build:
+
+* Level 0: System
+* Level 1: Applications
+* Level 2: Components
+
+## 7. Output Format
+
+Output YAML:
+
+```yaml
+system: "<SystemName>"
+applications:
+  - name: "<ApplicationName>"
+    components:
+      - name: "<ComponentName>"
+        code_source: "<path>"
+        component_type: "<type>"
+        technology:
+          dotnet_target: "<value>"
+          platform: "<value>"
+          ui_framework: "<value>"
+          key_packages:
+            - "<package>"
+        dependency_list:
+          - name: "<DependencyName>"
+            type: "<project | nuget | external_api | database | etc.>"
+        consumer_list:
+          - name: "<UpstreamComponent>"
+            relation: "project_reference"
+        notes: "<optional>"
+```
+
+Below the YAML add a summary with:
+
+* Number of applications
+* Number of components
+* Notable observations
+
+YAML name : ./model/system_portfolio.yml
+
+## 8. Quality Rules
+
+* All attributes must be filled.
+* Document uncertainties in `notes`.
+* Include every `.csproj`.
+* Provide concise and explicit descriptions.
