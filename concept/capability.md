@@ -22,10 +22,6 @@ The system response to the any opensource information, and generate thoughts of 
 
 
 
-
-
-
-
 Your brain is responsible for the following functions:
 Automatic behaviors like breathing, heart rate, sleep and temperature control
 Fight-or-flight response (stress response)
