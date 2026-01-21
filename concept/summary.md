@@ -34,6 +34,8 @@ Business domain is defined for a giving use case. The defintions includes:
 5. Goal Seeking 
 6. Preference
 7. Terms and Domain Semantic Model
+8. Agentic framework
 
 # Solution Building Blockers
+
 
