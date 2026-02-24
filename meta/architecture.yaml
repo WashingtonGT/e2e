@@ -1,0 +1,161 @@
+metadata:
+  version: 1.0.0
+  title: Architecture Documentation Outline
+  intent: >
+    Provide a standardized structure for architecture docs so that every
+    artifact includes the required viewpoints, diagrams, and descriptive guidance.
+  usage:
+    - Follow the section order when creating new docs.
+    - Treat all subsections as required unless explicitly marked optional.
+    - Conclude every Markdown file with a Source Reference note that links to the
+      repository path for that specific document (e.g., `!!! note "Source"` block).
+sections:
+  - name: Home
+    description: >
+      Landing page that states the product/system name, its current release,
+      and a short elevator pitch (what it does, who uses it).
+  - name: System Overview
+    description: >
+      Explain why the system exists, who benefits, and the environment it
+      operates in before drilling into architecture specifics.
+    subsections:
+      - name: Purpose & Context
+        description: >
+          Articulate the business goals, primary capabilities, key constraints,
+          and stakeholders; include links to strategy docs if available.
+      - name: High Level Architecture
+        description: >
+          Present the big-picture view highlighting major subsystems,
+          deployment topology, and their responsibilities.
+        subsections:
+          - name: High Level Architecture Diagram
+            description: >
+              Layered architecture visual showing horizontal (presentation, services, data, etc.)
+              and/or vertical slices (domains) with clear labels. This is intended for broad consumption
+              and will not have connections between the components. A Mermaid flowchart diagram is a good default.
+            requirements:
+              - Include the diagram Mermaid specification, image, or other appropriate file as an asset in the same directory.
+              - Use multiple diagrams if needed.
+              - Annotate layer boundaries and key dependencies.
+          - name: High Level Architecture Description
+            description: >
+              Narrative that walks through each layer in the diagram,
+              clarifying data/control flow and rationale for separation.
+              Each element in the High Level Architecture Diagram should be described with one or two lines.
+              A table is the ideal format for this, with columns for "Layer", "Sublayer", "Component", and "Description"
+              as appropriate.
+          - name: Tech Stack
+            description: >
+              Enumerate architecturally relevant major languages, frameworks, infrastructure services,
+              managed offerings, and rationale for their selection. Each should have its own subsection.
+  - name: Application Architecture
+    description: >
+      Describe application-level structure, responsibilities, and runtime
+      behavior using progressively detailed diagrams. Prefer Mermaid C4 style context, container, and component diagrams format
+      the primary subsections, and utilize Mermaid UML, Sequence, and Flowchart diagrams to support if needed.
+    subsections:
+      - name: Context Diagram
+        description: >
+          Show the system in relation to users and neighbouring systems,
+          emphasizing data exchanged and trust boundaries.
+        requirements:
+          - Include the diagram Mermaid specification, image, or other appropriate file as an asset in the same directory.
+          - Use multiple diagrams if needed.
+        subsections:
+          - name: Application Diagrams
+            description: >
+              Break down each internal application, service, database, message flows,
+              and key external dependencies at a coarse grain. This should be based around the C4 model
+              of "containers" (things that can be run)
+            requirements:
+              - Include the diagram Mermaid specification, image, or other appropriate file as an asset in the same directory.
+              - Use multiple diagrams if needed.
+            subsections:
+              - name: Application Details
+                description: >
+                  Describe, if relevant, the detailed interactions of the component. Focus on critical paths or services;
+                  include Mermaid UML, Sequence, or State diagrams as needed. Elements should be based around the "containers" or,
+                  if needed, the C4 model of "components" which are pieces of the system that are part of a larger 
+                  "container" and aren't run independently.
+                requirements:
+                  - Include the diagram Mermaid specification, image, or other appropriate file as an asset in the same directory.
+              - Use multiple diagrams if needed.
+  - name: Information Architecture
+    description: >
+      Capture how information is structured, stored, governed, and protected. This should include the logical data model for the system,
+      the logical security model, and the logical configuration model.
+    subsections:
+      - name: Logical Data Model
+        description: >
+          Describe logical representations and relationships of resources, key entities, attributes, properties, 
+          and so on that will allow readers to understand the structure of data under this system.
+          Mermaid ERD or Graph models are appropriate depending on the data source.
+        requirements:
+          - Include the diagram Mermaid specification, image, or other appropriate file as an asset in the same directory.
+      - name: Configuration
+        description: >
+          Enumerate configuration items, sources, change mechanisms, and validation necessary for this system.
+      - name: Secrets and Security
+        description: >
+          Explain secret storage, rotation, access policies, and compliance
+          requirements; reference threat models if available.
+      - name: Policy
+        description: >
+          Outline data governance, audit, privacy, retention, and regulatory
+          policies that influence architecture decisions.
+  - name: Interfaces
+    description: >
+      Describe how the system interacts internally and externally, ensuring
+      contract clarity and lifecycle management.
+    subsections:
+      - name: Internal Interfaces
+        description: >
+          List intra-system APIs, events, shared libraries, and their SLAs;
+          mention versioning and observability expectations.
+      - name: External Interfaces
+        description: >
+          Enumerate third-party or customer-facing APIs/events, protocols,
+          authentication schemes, rate limits, and backward compatibility plans.
+      - name: API Contracts
+        description: >
+          Embed or link to API contracts (e.g., OpenAPI, Swagger, gRPC) as appropriate to this system.
+  - name: Components
+    description: >
+      Provide deep dives on each component of the deployable architecture (as a guide, the C4 "containers" 
+      optionally broken down with "components" concept if needed)
+      that explain how each module is built, configured, operated, and integrated.
+      These typically live under docs/005-components/<component-name>.md or similar.
+    requirements:
+      - Every component entry must state the Name & Kind (e.g., apis-monitor-api, Deployment).
+      - Include Responsibilities, primary features, and runtime context (upstream/downstream).
+      - Capture container image, version/tag, and provenance.
+      - List configuration sources plus the exact Secret/ConfigMap keys referenced.
+      - Document exposed ports, protocols, and authentication/authorization expectations.
+      - Enumerate dependencies such as databases, queues, APIs, storage, and caches.
+      - Describe scaling characteristics, resource requests/limits, liveness/readiness probes, and cron/automation hooks.
+      - Call out environment differences (dev/test/prod) or feature toggles.
+      - Summarize data read/write patterns (collections, tables, buckets, topics) and retention.
+      - Detail inbound/outbound interfaces, including internal events/APIs.
+      - Provide at least one simple Mermaid diagram showing component relationships (e.g., graph LR module --> dependency).
+    subsections:
+      - name: Component Summary
+        description: >
+          Narrative paragraph plus structured metadata for Name & Kind, image/version,
+          responsibilities, core features, and high-level context.
+      - name: Configuration & Operations
+        description: >
+          Explain ConfigMaps/Secrets, environment variables, ports/protocols,
+          scaling model, health probes, and environment-specific overrides.
+      - name: Interfaces & Data
+        description: >
+          Describe inbound/outbound interfaces (APIs, events, queues) together with
+          the data assets touched (DBs, topics, buckets). Include dependencies,
+          auth requirements, and SLAs or throttling.
+      - name: Diagram
+        description: >
+          Embed a concise Mermaid graph or sequence diagram that illustrates how
+          the module interacts with its dependencies and consumers.
+  - name: Infrastructure Architecture
+    description: >
+      Provide visuals of how the system is deployed. This should include physical architecture and network
+      architecture.
