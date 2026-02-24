@@ -14,6 +14,18 @@ sections:
     description: >
       Landing page that states the product/system name, its current release,
       and a short elevator pitch (what it does, who uses it).
+  - name: Concept and Operations (ConOps)
+    description: >
+      Explain what the system will do, and why (rationale). It should also define any critical, 
+      top-level performance requirements or objectives (stated either qualitatively or 
+      quantitatively) 
+      It should cover Concepts, Terms, Operational Boundaries, Stakeholders, Processes, and Performance.
+    subsections:
+      - name: Summary
+        description: Explain what the system will do.        
+      - 
+      - name: Concepts
+      
   - name: System Overview
     description: >
       Explain why the system exists, who benefits, and the environment it
